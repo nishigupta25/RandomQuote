@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Quote Generator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <span>
+        <h2>Random Quote Generator</h2>
+      </span>
+      <p id="quote"></p>
+      <button id="btn">New Quote</button>
+    </div>
+    <script>
+      const quoteContainer = document.getElementById("quote");
+      const btn = document.getElementById("btn");
+      const url = " http://api.quotable.io/random";
+      btn.addEventListener("click", getQuote);
+      function getQuote() {
+        fetch(url)
+          .then((data) => data.json())
+          .then((item) => {
+            quoteContainer.textContent = item.content;
+          });
+      }
+    </script>
+  </body>
+</html>
